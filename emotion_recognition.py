@@ -7,10 +7,9 @@ model = load_model('emotion_model.h5')
 
 emotions=["angry","happy","sad","surprise"]
 
-# Load Haar cascade only once
+# Load Haar cascade 
 haar_cascade = cv.CascadeClassifier("haar_cascade.xml")
 
-# Open webcam
 vid = cv.VideoCapture(0)
 
 while True:
@@ -30,7 +29,7 @@ while True:
         face = cv.resize(face, (48, 48))       # Resize
         face = cv.cvtColor(face, cv.COLOR_BGR2RGB)  # Convert BGR to RGB
         face = face.astype("float32") / 255.0
-        face = face.reshape((1, 48, 48, 3))     # Add batch dimension
+        face = face.reshape((1, 48, 48, 3))     
     
     prediction=model.predict(face)
     class_index = np.argmax(prediction)
@@ -44,6 +43,5 @@ while True:
     if cv.waitKey(20) & 0xFF == ord('d'):
         break
 
-# Release resources
 vid.release()
 cv.destroyAllWindows()
