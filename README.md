@@ -14,6 +14,10 @@ This project performs real-time facial emotion detection using a CNN model train
 - Sad
 - Surprise
 
+## 📚 Dataset
+This project uses the [KAGGLE FER-2013 (Facial Expression Recognition)](https://www.kaggle.com/datasets/msambare/fer2013) dataset for training and evaluation.
+
+
 ## 📁 Project Structure
 ```
 .
@@ -38,6 +42,8 @@ python emotion_recognition.py
 ```
 
 ## ⚙️ Requirements
+Download the FER-2013 dataset and store it in your local dataset folder.
+
 Install the required Python libraries:
 ```bash
 pip install -r requirements.txt
@@ -45,3 +51,4 @@ pip install -r requirements.txt
 
 ## 📄 License
 This project is for educational and non-commercial use.
+
