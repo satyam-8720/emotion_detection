@@ -1,22 +1,18 @@
 
-
 import cv2 as cv
 import numpy as np
 import os
 import tensorflow as tf
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-
 
 
 # preparing training data
 
 # test and train data current directory
-train_dir=(r"C:\Users\satya\ai\emotion_detection\emotion_face\train") 
-test_dir=(r"C:\Users\satya\ai\emotion_detection\emotion_face\test")
+train_dir=(r"...\train") 
+test_dir=(r"...\test")
 emotions=["angry","happy","sad","surprise"]
-
 
 
 def emotion_data(directory,limit):
@@ -39,16 +35,11 @@ def emotion_data(directory,limit):
     return np.array(x,dtype='float32') , np.array(y)
 
 
-
-
 x_train,y_train=emotion_data(train_dir,1000)
 x_test,y_test=emotion_data(test_dir,100)
 
-
-
 x_train=x_train/255
 x_test=x_test/255
-
 
 
 import matplotlib.pyplot as plt
@@ -83,8 +74,6 @@ model.compile(optimizer = 'adam',
              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
              metrics=['accuracy'])
 model.fit(x_train,y_train,epochs=30)
-
-
 
 
 model.evaluate(x_test,y_test)
